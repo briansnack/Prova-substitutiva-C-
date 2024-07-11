@@ -6,10 +6,20 @@ function AlunoCadastrar() {
   const navigate = useNavigate();
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
+  const [alunos, setAlunos] = useState<Aluno[]>([]);
 
   useEffect(() => {
-    console.log("O componente foi carregado...");
-}, []);
+    carregarAlunos();
+  }, []);
+
+  function carregarAlunos() {
+    //FETCH ou AXIOS
+    fetch("http://localhost:5062/aluno/listar")
+      .then((resposta) => resposta.json())
+      .then((alunos: Aluno[]) => {
+        setAlunos(alunos);
+      });
+  }
 
   function cadastrarAluno(e: any) {
     const aluno: Aluno = {
@@ -18,27 +28,19 @@ function AlunoCadastrar() {
     };
 
     //FETCH ou AXIOS
-    fetch('http://localhost:5062/cliente/cadastrar', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(aluno)
+    fetch("http://localhost:5062/aluno/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(aluno),
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro na requisição: ' + response.statusText);
-        }
-        return response.json();
-    })
-    .then(data => {
-        setNome('');
-        setCpf('');
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-    });
-}
+      .then((resposta) => resposta.json())
+      .then((aluno: Aluno) => {
+        navigate("/pages/aluno/listar");
+      });
+    e.preventDefault();
+  }
 
   return (
     <div>

@@ -7,4 +7,5 @@ public class Imc
     public double Altura { get; set; }
     public double Imcs { get; set; }
     public DateTime CriadoEm { get; set; } = DateTime.Now;
+    public int AlunoId { get; set; }
 }

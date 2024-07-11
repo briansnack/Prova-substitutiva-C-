@@ -30,4 +30,4 @@ Content-Type: application/json
 }
 
 ### Listar imc por aluno
-GET http://localhost:5062/imc/imcporaluno
+GET http://localhost:5062/imc/listar/111.121.125-11
