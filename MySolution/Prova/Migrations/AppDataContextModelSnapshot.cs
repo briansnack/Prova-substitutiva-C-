@@ -41,9 +41,8 @@ namespace Prova.Migrations
                     b.Property<double>("Altura")
                         .HasColumnType("REAL");
 
-                    b.Property<string>("AlunoId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("TEXT");

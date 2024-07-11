@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Prova.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Migração : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,7 +31,9 @@ namespace Prova.Migrations
                     ImcId = table.Column<string>(type: "TEXT", nullable: false),
                     Peso = table.Column<double>(type: "REAL", nullable: false),
                     Altura = table.Column<double>(type: "REAL", nullable: false),
-                    Imcs = table.Column<double>(type: "REAL", nullable: false)
+                    Imcs = table.Column<double>(type: "REAL", nullable: false),
+                    CriadoEm = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    AlunoId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

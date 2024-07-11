@@ -57,11 +57,7 @@ app.MapPost("/aluno/cadastrar", ([FromServices] AppDataContext ctx, [FromBody] A
 //GET: http://localhost:5062/imc/listar
 app.MapGet("/imc/listar", ([FromServices] AppDataContext ctx) =>
 {
-    if (ctx.Imc.Any())
-    {
-        return Results.Ok(ctx.Imc.ToList());
-    }
-    return Results.NotFound("Nenhum imc encontrado");
+    return Results.Ok(ctx.Imc.ToList());
 });
 
 //POST: http://localhost:5062/imc/cadastrar
@@ -90,9 +86,9 @@ app.MapPost("/imc/cadastrar", ([FromServices] AppDataContext ctx, [FromBody] Imc
 // PUT: http://localhost:5062/imc/alterar/{alunoId}
 // app.MapPut("/imc/alterar/{alunoId}", ([FromServices] AppDataContext ctx, [FromRoute] string imcId) =>
 // {
-//     //Implementar a alteração do status da tarefa
 //     Imc? imc = ctx.Imc.FirstOrDefault(x => x.imcId == imcId);
-//     if (imc is null) {
+//     if (imc is null)
+//     {
 //         return Results.NotFound("Imc não encontrado!");
 //     }
 //     imc.Altura = imcAlterado.Altura;
@@ -102,25 +98,20 @@ app.MapPost("/imc/cadastrar", ([FromServices] AppDataContext ctx, [FromBody] Imc
 //     return Results.Ok("Informações do Imc alteradas!");
 // });
 
-//GET: http://localhost:5062/imc/listar/{cpf}
-app.MapGet("/imc/listar/{cpf}", ([FromServices] AppDataContext ctx, [FromRoute] string cpf) =>
-{
-    Imc? imc = ctx.Imc.
-        Include(x => x.aluno).
-        FirstOrDefault(f => f.aluno.CPF == cpf);
-    if (imc is null)
-    {
-        return Results.NotFound();
-    }
-    return Results.Ok(imc);
-});
-
-// //GET: http://localhost:5273/tarefas/concluidas
-// app.MapGet("/tarefas/concluidas", ([FromServices] AppDataContext ctx) =>
+// //GET: http://localhost:5062/imc/listar/{cpf}
+// app.MapGet("/imc/listar/{cpf}", ([FromServices] AppDataContext ctx, [FromRoute] string cpf) =>
 // {
-//Implementar a listagem de tarefas concluídas
-//     return Results.Ok(ctx.Tarefas.Where(x => x.Status == "Concluída").ToList());
+//     Imc? imc = ctx.Imc.
+//         Include(x => x.aluno).
+//         FirstOrDefault(f => f.aluno.CPF == cpf);
+//     if (imc is null)
+//     {
+//         return Results.NotFound();
+//     }
+//     return Results.Ok(imc);
 // });
+
+
 
 app.UseCors("Acesso Total");
 app.Run();

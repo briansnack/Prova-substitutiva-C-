@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Prova.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20240711130004_Migração2")]
-    partial class Migração2
+    [Migration("20240711142137_Migração")]
+    partial class Migração
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,9 +44,8 @@ namespace Prova.Migrations
                     b.Property<double>("Altura")
                         .HasColumnType("REAL");
 
-                    b.Property<string>("AlunoId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("TEXT");
