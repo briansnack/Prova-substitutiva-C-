@@ -1,0 +1,33 @@
+@Prova_HostAddress = http://localhost:5062
+
+### ALUNO
+
+### Listar todas os alunos
+GET http://localhost:5062/aluno/listar
+
+### Cadastrar um aluno
+POST http://localhost:5062/aluno/cadastrar
+Content-Type: application/json
+
+{
+    "nome": "Matheus",
+    "cpf": "111.121.125-11"
+}
+
+### IMC
+
+### Listar todos os Imcs
+GET http://localhost:5062/imc/listar
+
+### Cadastrar IMC
+POST http://localhost:5062/imc/cadastrar
+Content-Type: application/json
+
+{
+    "alunoId": "9b928e33-6edd-4dd8-966f-1deeb65026e9",
+    "altura": 1.65,
+    "peso": 120 
+}
+
+### Listar imc por aluno
+GET http://localhost:5062/imc/imcporaluno
